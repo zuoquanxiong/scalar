@@ -1,5 +1,83 @@
 # @scalar/swagger-editor
 
+## 0.10.5
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+- Updated dependencies [92a8b9f]
+- Updated dependencies [abfb086]
+  - @scalar/use-codemirror@0.8.4
+  - @scalar/components@0.2.3
+  - @scalar/themes@0.5.5
+
+## 0.10.4
+
+### Patch Changes
+
+- cb8139e7: fix: rollback api client proxy and request changes
+
+## 0.10.3
+
+### Patch Changes
+
+- Updated dependencies [d4fff0de]
+  - @scalar/use-codemirror@0.8.3
+
+## 0.10.2
+
+### Patch Changes
+
+- Updated dependencies [f8650e4f]
+  - @scalar/use-codemirror@0.8.2
+
+## 0.10.1
+
+### Patch Changes
+
+- dd6dd283: fix: expect a blob when fetching spec via proxy
+- Updated dependencies [b1f3cb49]
+  - @scalar/use-codemirror@0.8.1
+
+## 0.10.0
+
+### Minor Changes
+
+- 612431b4: Migrate model logic from codemirror component to hook
+
+### Patch Changes
+
+- Updated dependencies [612431b4]
+  - @scalar/use-codemirror@0.8.0
+
+## 0.9.12
+
+### Patch Changes
+
+- 04c0bd9b: chore: remove unused dependencies
+
+## 0.9.11
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+- Updated dependencies [6da73708]
+  - @scalar/use-codemirror@0.7.22
+
+## 0.9.10
+
+### Patch Changes
+
+- Updated dependencies [cd7afa70]
+  - @scalar/use-codemirror@0.7.21
+
+## 0.9.9
+
+### Patch Changes
+
+- Updated dependencies [3d712d74]
+  - @scalar/use-codemirror@0.7.20
+
 ## 0.9.8
 
 ### Patch Changes

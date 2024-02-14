@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         with:
           version: 8
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,4 +34,11 @@ jobs:
       - name: Check types
         run: pnpm turbo types:check
       - name: Run tests
-        run: pnpm turbo test
+        run: pnpm test
+      - if: matrix.node-version == 20
+        name: Send bundle stats and build information to RelativeCI
+        uses: relative-ci/agent-action@v2
+        with:
+          key: ${{ secrets.RELATIVE_CI_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          webpackStatsFile: ./packages/api-reference/dist/webpack-stats.json

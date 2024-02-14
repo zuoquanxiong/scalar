@@ -1,5 +1,33 @@
 # @scalar/fastify-api-reference
 
+## 1.16.0
+
+### Minor Changes
+
+- e0faebb: feat: add show more button to request variables and path params
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+
+## 1.15.5
+
+### Patch Changes
+
+- 04d0fe12: fix: rollback api client proxy and request changes
+
+## 1.14.8
+
+### Patch Changes
+
+- d7dbba87: fix: css reset on markdown details summary
+
+## 1.13.18
+
+### Patch Changes
+
+- b4f66f0b: fix: example spec not loading on mobile
+
 ## 1.13.13
 
 ### Patch Changes

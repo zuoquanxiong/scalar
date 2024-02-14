@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         with:
           version: 8
       - name: Use Node.js ${{ matrix.node-version }}
@@ -44,5 +44,18 @@ jobs:
           # The command to use to build and publish packages
           publish: 'pnpm -r publish --access public'
         env:
+          # https://github.com/settings/tokens/new
+          # Expiration: No expiration
+          # Select: repo.*
           GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          # https://www.npmjs.com/settings/YOUR_ACCOUNT_HANDLE/tokens/granular-access-tokens/new
+          # Custom Expiration: 01-01-2100
+          # Permissions: Read and Write
+          # Select packages: @scalar
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Send bundle stats and build information to RelativeCI
+        uses: relative-ci/agent-action@v2
+        with:
+          key: ${{ secrets.RELATIVE_CI_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          webpackStatsFile: ./packages/api-reference/dist/webpack-stats.json

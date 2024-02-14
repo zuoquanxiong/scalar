@@ -1,5 +1,35 @@
 # @scalar/api-client-proxy
 
+## 0.5.18
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+
+## 0.5.17
+
+### Patch Changes
+
+- cb8139e7: fix: rollback api client proxy and request changes
+
+## 0.5.16
+
+### Patch Changes
+
+- 037029cc: fix: only expose special proxy headers instead of \*
+
+## 0.5.15
+
+### Patch Changes
+
+- dd6dd283: fix: expect a blob when fetching spec via proxy
+
+## 0.5.14
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+
 ## 0.5.13
 
 ### Patch Changes

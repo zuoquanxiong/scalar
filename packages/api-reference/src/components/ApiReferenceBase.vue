@@ -14,6 +14,7 @@ import { computed, defineAsyncComponent, ref, watch } from 'vue'
 import { deepMerge } from '../helpers'
 import { useParser, useSnippetTargets, useSpec } from '../hooks'
 import { useDarkModeState } from '../hooks/useDarkModeState'
+import { useGlobalStore } from '../stores'
 import {
   DEFAULT_CONFIG,
   type ReferenceConfiguration,
@@ -129,6 +130,13 @@ function handleCloseModal(passThrough: () => void) {
 }
 
 const isMobile = useMediaQuery('(max-width: 1000px)')
+
+// Prefill authentication
+const { setAuthentication } = useGlobalStore()
+
+if (props.configuration?.authentication) {
+  setAuthentication(props.configuration?.authentication)
+}
 </script>
 <template>
   <component
@@ -147,7 +155,7 @@ const isMobile = useMediaQuery('(max-width: 1000px)')
       :value="rawSpecRef"
       @changeTheme="$emit('changeTheme', $event)"
       @openSwaggerEditor="gettingStartedModal.hide()"
-      @updateContent="handleCloseModal(() => $emit('updateContent', $event))" />
+      @updateContent="handleCloseModal(() => setRawSpecRef($event))" />
   </FlowModal>
   <ResetStyles v-slot="{ styles }">
     <ApiReferenceLayout

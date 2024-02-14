@@ -1,5 +1,3 @@
-import { readonly } from 'vue'
-
 /**
  * This function takes a properties object and generates an example response content.
  */
@@ -173,8 +171,8 @@ export const getExampleFromSchema = (
               ...newExample,
             }
           : Array.isArray(newExample) && Array.isArray(example)
-          ? [...(example ?? {}), ...newExample]
-          : newExample
+            ? [...(example ?? {}), ...newExample]
+            : newExample
     })
 
     return example

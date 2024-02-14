@@ -11,7 +11,9 @@ export const getRequestFromOperation = (
   operation: TransformedOperation,
   options?: {
     replaceVariables?: boolean
+    requiredOnly?: boolean
   },
+  selectedExampleKey?: string | number,
 ): Partial<HarRequestWithPath> => {
   // Replace all variables of the format {something} with the uppercase variable name without the brackets
   let path = operation.path
@@ -27,19 +29,27 @@ export const getRequestFromOperation = (
     }
   }
 
-  const requestBody = getRequestBodyFromOperation(operation)
+  const requestBody = getRequestBodyFromOperation(operation, selectedExampleKey)
 
   return {
     method: operation.httpVerb.toUpperCase(),
     path,
     headers: [
-      ...getParametersFromOperation(operation, 'header'),
+      ...getParametersFromOperation(operation, 'header', options?.requiredOnly),
       ...(requestBody?.headers ?? []),
     ] as Header[],
     // TODO: Sorry, something is off here and I don’t get it.
     // @ts-ignore
     postData: requestBody?.postData,
-    queryString: getParametersFromOperation(operation, 'query') as Query[],
-    cookies: getParametersFromOperation(operation, 'cookie') as Cookie[],
+    queryString: getParametersFromOperation(
+      operation,
+      'query',
+      options?.requiredOnly,
+    ) as Query[],
+    cookies: getParametersFromOperation(
+      operation,
+      'cookie',
+      options?.requiredOnly,
+    ) as Cookie[],
   }
 }

@@ -1,5 +1,97 @@
 # @scalar/api-client
 
+## 0.12.0
+
+### Minor Changes
+
+- e0faebb: feat: add show more button to request variables and path params
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+- abfb086: chore: remove unused CodeMirror CSS
+- 76f4041: chore: remove unused code
+- Updated dependencies [92a8b9f]
+- Updated dependencies [abfb086]
+  - @scalar/use-keyboard-event@0.5.9
+  - @scalar/use-codemirror@0.8.4
+  - @scalar/components@0.2.3
+  - @scalar/use-modal@0.2.4
+  - @scalar/themes@0.5.5
+
+## 0.11.5
+
+### Patch Changes
+
+- cb8139e7: fix: rollback api client proxy and request changes
+
+## 0.11.4
+
+### Patch Changes
+
+- 037029cc: fix: parse axios error responses as blobs
+
+## 0.11.3
+
+### Patch Changes
+
+- Updated dependencies [d4fff0de]
+  - @scalar/use-codemirror@0.8.3
+
+## 0.11.2
+
+### Patch Changes
+
+- f8650e4f: Bundle codemirror and update packages
+- Updated dependencies [f8650e4f]
+  - @scalar/use-codemirror@0.8.2
+
+## 0.11.1
+
+### Patch Changes
+
+- Updated dependencies [b1f3cb49]
+  - @scalar/use-codemirror@0.8.1
+
+## 0.11.0
+
+### Minor Changes
+
+- 26340b12: feat: update components to support all basic http request methods
+
+### Patch Changes
+
+- Updated dependencies [612431b4]
+  - @scalar/use-codemirror@0.8.0
+
+## 0.10.2
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+- Updated dependencies [6da73708]
+  - @scalar/use-codemirror@0.7.22
+
+## 0.10.1
+
+### Patch Changes
+
+- Updated dependencies [cd7afa70]
+  - @scalar/use-codemirror@0.7.21
+
+## 0.10.0
+
+### Minor Changes
+
+- dccb83ab: feat: add default state for api client collapsed panels
+
+## 0.9.4
+
+### Patch Changes
+
+- Updated dependencies [3d712d74]
+  - @scalar/use-codemirror@0.7.20
+
 ## 0.9.3
 
 ### Patch Changes

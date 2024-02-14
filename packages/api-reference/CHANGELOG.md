@@ -1,5 +1,212 @@
 # @scalar/api-reference
 
+## 1.16.1
+
+### Patch Changes
+
+- 997568b: fix: wrapping of url on request snippet url
+
+## 1.16.0
+
+### Minor Changes
+
+- e0faebb: feat: add show more button to request variables and path params
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+- 230f9fb: feat: prefill the authentication data
+- 77c62d3: fix: path isn’t prefixed (https://github.com/scalar/scalar/issues/937)
+- Updated dependencies [e0faebb]
+- Updated dependencies [92a8b9f]
+- Updated dependencies [abfb086]
+- Updated dependencies [76f4041]
+  - @scalar/api-client@0.12.0
+  - @scalar/use-keyboard-event@0.5.9
+  - @scalar/swagger-editor@0.10.5
+  - @scalar/swagger-parser@0.5.16
+  - @scalar/use-codemirror@0.8.4
+  - @scalar/use-tooltip@0.5.9
+  - @scalar/components@0.2.3
+  - @scalar/use-toasts@0.5.14
+  - @scalar/use-modal@0.2.4
+  - @scalar/themes@0.5.5
+
+## 1.15.6
+
+### Patch Changes
+
+- 27a9e708: fix: remove type="text" from the search button placeholder span
+
+## 1.15.5
+
+### Patch Changes
+
+- Updated dependencies [cb8139e7]
+  - @scalar/swagger-editor@0.10.4
+  - @scalar/api-client@0.11.5
+
+## 1.15.4
+
+### Patch Changes
+
+- 15738a16: fix: set custom scroll on container for endpoints overview
+- Updated dependencies [037029cc]
+  - @scalar/api-client@0.11.4
+
+## 1.15.3
+
+### Patch Changes
+
+- Updated dependencies [d4fff0de]
+  - @scalar/use-codemirror@0.8.3
+  - @scalar/api-client@0.11.3
+  - @scalar/swagger-editor@0.10.3
+
+## 1.15.2
+
+### Patch Changes
+
+- Updated dependencies [f8650e4f]
+  - @scalar/use-codemirror@0.8.2
+  - @scalar/api-client@0.11.2
+  - @scalar/swagger-editor@0.10.2
+
+## 1.15.1
+
+### Patch Changes
+
+- Updated dependencies [dd6dd283]
+- Updated dependencies [b1f3cb49]
+  - @scalar/swagger-editor@0.10.1
+  - @scalar/use-codemirror@0.8.1
+  - @scalar/api-client@0.11.1
+
+## 1.15.0
+
+### Minor Changes
+
+- 612431b4: Migrate model logic from codemirror component to hook
+- 26340b12: feat: update components to support all basic http request methods
+
+### Patch Changes
+
+- Updated dependencies [612431b4]
+- Updated dependencies [26340b12]
+  - @scalar/swagger-editor@0.10.0
+  - @scalar/use-codemirror@0.8.0
+  - @scalar/api-client@0.11.0
+
+## 1.14.10
+
+### Patch Changes
+
+- a963f10e: fix: shrink label and not actions on mobile
+- 4db085f4: feat: use provided examples for the request and the response
+- d1c085a0: fix: only open models sidebar section on scroll
+
+## 1.14.9
+
+### Patch Changes
+
+- 2f7ce4d8: feat: improve model look and feel
+
+## 1.14.8
+
+### Patch Changes
+
+- d7dbba87: fix: css reset on markdown details summary
+
+## 1.14.7
+
+### Patch Changes
+
+- ba5b70ce: feat: collapse all subschemas by default
+
+## 1.14.6
+
+### Patch Changes
+
+- 04c0bd9b: feat: details/summary tags in markdown
+- 569c104f: fix: swagger 2.0 response body isn’t shown
+- Updated dependencies [04c0bd9b]
+  - @scalar/swagger-editor@0.9.12
+
+## 1.14.5
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+- Updated dependencies [6da73708]
+  - @scalar/swagger-editor@0.9.11
+  - @scalar/use-codemirror@0.7.22
+  - @scalar/api-client@0.10.2
+
+## 1.14.4
+
+### Patch Changes
+
+- Updated dependencies [cd7afa70]
+  - @scalar/use-codemirror@0.7.21
+  - @scalar/api-client@0.10.1
+  - @scalar/swagger-editor@0.9.10
+
+## 1.14.3
+
+### Patch Changes
+
+- e9eefff4: feat: improve custom example block with try request button, path and improved select
+- Updated dependencies [dccb83ab]
+  - @scalar/api-client@0.10.0
+
+## 1.14.2
+
+### Patch Changes
+
+- 6caef07c: fix: response examples with a single value don’t render
+
+## 1.14.1
+
+### Patch Changes
+
+- eb4faf8c: fix: search input has autocomplete enabled
+
+## 1.14.0
+
+### Minor Changes
+
+- a244b049: Fix markdown table alignment
+
+## 1.13.19
+
+### Patch Changes
+
+- 3d712d74: chore: remove light/dark mode features from useCodeMirror
+- Updated dependencies [3d712d74]
+  - @scalar/use-codemirror@0.7.20
+  - @scalar/api-client@0.9.4
+  - @scalar/swagger-editor@0.9.9
+
+## 1.13.18
+
+### Patch Changes
+
+- b4f66f0b: fix: example spec not loading on mobile
+
+## 1.13.17
+
+### Patch Changes
+
+- 8ffea2ae: feat: better schema support for params
+- e073b015: fix: allow response to scroll horizontally
+
+## 1.13.16
+
+### Patch Changes
+
+- fcb2b75b: fix: text in method badges wraps for PATCH operations
+- 8e7fcfa0: chore: improve types
+
 ## 1.13.15
 
 ### Patch Changes

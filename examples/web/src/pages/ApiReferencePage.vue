@@ -5,6 +5,7 @@ import {
 } from '@scalar/api-reference'
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 
+import DevReferencesOptions from '../components/DevReferencesOptions.vue'
 import DevToolbar from '../components/DevToolbar.vue'
 import SlotPlaceholder from '../components/SlotPlaceholder.vue'
 
@@ -12,11 +13,22 @@ const content = ref('')
 
 const configuration = reactive<ReferenceConfiguration>({
   theme: 'default',
-  proxy: 'http://localhost:5051',
+  proxy: import.meta.env.VITE_REQUEST_PROXY_URL,
   isEditable: true,
   showSidebar: true,
   layout: 'modern',
   spec: { content },
+  authentication: {
+    securitySchemeKey: 'petstore_auth',
+    oAuth2: {
+      clientId: 'foobar123',
+      scopes: ['read:pets', 'write:pets'],
+    },
+    // securitySchemeKey: 'api_key',
+    // apiKey: {
+    //   token: 'super-secret-token',
+    // },
+  },
 })
 
 onMounted(() => {
@@ -40,7 +52,9 @@ const configProxy = computed({
     @changeTheme="configuration.theme = $event"
     @updateContent="(v) => (content = v)">
     <template #header>
-      <DevToolbar v-model="configProxy" />
+      <DevToolbar>
+        <DevReferencesOptions v-model="configProxy" />
+      </DevToolbar>
     </template>
     <template #sidebar-start>
       <SlotPlaceholder>sidebar-start</SlotPlaceholder>

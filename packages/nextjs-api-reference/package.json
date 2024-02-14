@@ -13,7 +13,7 @@
     "openapi",
     "swagger"
   ],
-  "version": "0.1.1",
+  "version": "0.1.26",
   "engines": {
     "node": ">=18"
   },
@@ -57,7 +57,7 @@
     "vite-plugin-dts": "^3.6.3"
   },
   "peerDependencies": {
-    "next": "^13 | ^14",
+    "next": "^13 || ^14",
     "react": "^18"
   }
 }

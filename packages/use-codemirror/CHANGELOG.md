@@ -1,5 +1,54 @@
 # @scalar/use-codemirror
 
+## 0.8.4
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+- abfb086: chore: remove unused CodeMirror CSS
+
+## 0.8.3
+
+### Patch Changes
+
+- d4fff0de: Externalize yjs depedency in use-codemirror
+
+## 0.8.2
+
+### Patch Changes
+
+- f8650e4f: Bundle codemirror and update packages
+
+## 0.8.1
+
+### Patch Changes
+
+- b1f3cb49: feat: Add optional extensions and reactive provider to useCodemirror
+
+## 0.8.0
+
+### Minor Changes
+
+- 612431b4: Migrate model logic from codemirror component to hook
+
+## 0.7.22
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+
+## 0.7.21
+
+### Patch Changes
+
+- cd7afa70: fix: don't scale codemirror text on mobile webkit
+
+## 0.7.20
+
+### Patch Changes
+
+- 3d712d74: chore: remove light/dark mode features from useCodeMirror
+
 ## 0.7.19
 
 ### Patch Changes

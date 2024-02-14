@@ -1,5 +1,180 @@
 # @scalar/nestjs-api-reference
 
+## 0.1.49
+
+### Patch Changes
+
+- Updated dependencies [997568b]
+  - @scalar/api-reference@1.16.1
+
+## 0.1.48
+
+### Patch Changes
+
+- 92a8b9f: chore: update dependencies
+- Updated dependencies [e0faebb]
+- Updated dependencies [92a8b9f]
+- Updated dependencies [230f9fb]
+- Updated dependencies [77c62d3]
+  - @scalar/api-reference@1.16.0
+
+## 0.1.47
+
+### Patch Changes
+
+- Updated dependencies [27a9e708]
+  - @scalar/api-reference@1.15.6
+
+## 0.1.46
+
+### Patch Changes
+
+- @scalar/api-reference@1.15.5
+
+## 0.1.45
+
+### Patch Changes
+
+- Updated dependencies [15738a16]
+  - @scalar/api-reference@1.15.4
+
+## 0.1.44
+
+### Patch Changes
+
+- @scalar/api-reference@1.15.3
+
+## 0.1.43
+
+### Patch Changes
+
+- @scalar/api-reference@1.15.2
+
+## 0.1.42
+
+### Patch Changes
+
+- @scalar/api-reference@1.15.1
+
+## 0.1.41
+
+### Patch Changes
+
+- Updated dependencies [612431b4]
+- Updated dependencies [26340b12]
+  - @scalar/api-reference@1.15.0
+
+## 0.1.40
+
+### Patch Changes
+
+- Updated dependencies [a963f10e]
+- Updated dependencies [4db085f4]
+- Updated dependencies [d1c085a0]
+  - @scalar/api-reference@1.14.10
+
+## 0.1.39
+
+### Patch Changes
+
+- Updated dependencies [2f7ce4d8]
+  - @scalar/api-reference@1.14.9
+
+## 0.1.38
+
+### Patch Changes
+
+- Updated dependencies [d7dbba87]
+  - @scalar/api-reference@1.14.8
+
+## 0.1.37
+
+### Patch Changes
+
+- Updated dependencies [ba5b70ce]
+  - @scalar/api-reference@1.14.7
+
+## 0.1.36
+
+### Patch Changes
+
+- Updated dependencies [04c0bd9b]
+- Updated dependencies [569c104f]
+  - @scalar/api-reference@1.14.6
+
+## 0.1.35
+
+### Patch Changes
+
+- 6da73708: feat: handle application/zip responses in the API client
+- Updated dependencies [6da73708]
+  - @scalar/api-reference@1.14.5
+
+## 0.1.34
+
+### Patch Changes
+
+- @scalar/api-reference@1.14.4
+
+## 0.1.33
+
+### Patch Changes
+
+- Updated dependencies [e9eefff4]
+  - @scalar/api-reference@1.14.3
+
+## 0.1.32
+
+### Patch Changes
+
+- Updated dependencies [6caef07c]
+  - @scalar/api-reference@1.14.2
+
+## 0.1.31
+
+### Patch Changes
+
+- Updated dependencies [eb4faf8c]
+  - @scalar/api-reference@1.14.1
+
+## 0.1.30
+
+### Patch Changes
+
+- Updated dependencies [a244b049]
+  - @scalar/api-reference@1.14.0
+
+## 0.1.29
+
+### Patch Changes
+
+- Updated dependencies [3d712d74]
+  - @scalar/api-reference@1.13.19
+
+## 0.1.28
+
+### Patch Changes
+
+- b4f66f0b: fix: example spec not loading on mobile
+- Updated dependencies [b4f66f0b]
+  - @scalar/api-reference@1.13.18
+
+## 0.1.27
+
+### Patch Changes
+
+- Updated dependencies [8ffea2ae]
+- Updated dependencies [e073b015]
+  - @scalar/api-reference@1.13.17
+
+## 0.1.26
+
+### Patch Changes
+
+- Updated dependencies [fcb2b75b]
+- Updated dependencies [8e7fcfa0]
+  - @scalar/api-reference@1.13.16
+
 ## 0.1.25
 
 ### Patch Changes

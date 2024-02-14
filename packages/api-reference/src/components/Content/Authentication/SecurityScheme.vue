@@ -1,20 +1,17 @@
 <script lang="ts" setup>
-import { type OpenAPIV3 } from 'openapi-types'
+import type { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types'
 import { computed } from 'vue'
 
 import { useGlobalStore } from '../../../stores'
-import type { SecurityScheme } from '../../../types'
-import MarkdownRenderer from '../MarkdownRenderer.vue'
+import { MarkdownRenderer } from '../../MarkdownRenderer'
 import CardForm from './CardForm.vue'
 import CardFormButton from './CardFormButton.vue'
 import CardFormGroup from './CardFormGroup.vue'
 import CardFormTextInput from './CardFormTextInput.vue'
 import SecuritySchemeScopes from './SecuritySchemeScopes.vue'
 
-// import MarkdownRenderer from '../MarkdownRenderer.vue'
-
 defineProps<{
-  value?: SecurityScheme
+  value?: OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject
 }>()
 
 const { authentication, setAuthentication } = useGlobalStore()
@@ -122,7 +119,12 @@ const startAuthentication = (url: string) => {
       @input="handleApiKeyTokenInput">
       {{ value.in.charAt(0).toUpperCase() + value.in.slice(1) }} API Key
     </CardFormTextInput>
-    <template v-else-if="value.type === 'http' || value.type === 'basic'">
+
+    <template
+      v-else-if="
+        value.type === 'http' || (value as unknown as any).type === 'basic'
+      ">
+      <!-- @vue-ignore -->
       <CardFormGroup v-if="value.type === 'basic' || value.scheme === 'basic'">
         <CardFormTextInput
           id="http.basic.username"
@@ -141,7 +143,7 @@ const startAuthentication = (url: string) => {
         </CardFormTextInput>
       </CardFormGroup>
       <CardFormTextInput
-        v-else-if="value.scheme === 'bearer'"
+        v-else-if="value.type === 'http' && value.scheme === 'bearer'"
         id="http.bearer.token"
         placeholder="Token"
         :value="authentication.http.bearer.token"

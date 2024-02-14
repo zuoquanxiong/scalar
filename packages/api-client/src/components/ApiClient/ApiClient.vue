@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import { type ThemeId, ThemeStyles } from '@scalar/themes'
-import { useKeyboardEvent } from '@scalar/use-keyboard-event'
+import { useMagicKeys, whenever } from '@vueuse/core'
 import { useMediaQuery } from '@vueuse/core'
 import { ref, watch } from 'vue'
 
 import { useRequestStore } from '../../stores'
+import HttpMethod from '../HttpMethod.vue'
 import AddressBar from './AddressBar.vue'
 import { Request } from './Request'
 import { Response } from './Response'
@@ -24,6 +25,9 @@ const props = withDefaults(
 const emit = defineEmits<{
   (e: 'escapeKeyPress'): void
 }>()
+
+const keys = useMagicKeys()
+whenever(keys.escape, () => emit('escapeKeyPress'))
 
 const { activeRequest, readOnly: stateReadOnly } = useRequestStore()
 
@@ -47,18 +51,14 @@ watch(
   },
   { immediate: true },
 )
-
-useKeyboardEvent({
-  keyList: ['escape'],
-  handler: () => emit('escapeKeyPress'),
-})
 </script>
 
 <template>
   <ThemeStyles :id="theme" />
-  <div
+  <HttpMethod
     class="scalar-api-client"
-    :class="`scalar-api-client--${activeRequest.type.toLowerCase() || 'get'}`"
+    :method="activeRequest.type ?? 'get'"
+    property="--default-scalar-api-client-color"
     @keydown.esc="emit('escapeKeyPress')">
     <AddressBar
       :proxyUrl="proxyUrl"
@@ -107,7 +107,7 @@ useKeyboardEvent({
         </TabGroup>
       </template>
     </div>
-  </div>
+  </HttpMethod>
 </template>
 
 <style>
@@ -141,61 +141,6 @@ useKeyboardEvent({
 }
 .scalar-api-client pre {
   font-family: var(--theme-font-code, var(--default-theme-font-code));
-}
-
-.scalar-api-client--post {
-  --default-scalar-api-client-color: var(
-    --theme-color-green,
-    var(--default-theme-color-green)
-  );
-  --default-scalar-api-client-background: var(
-    --theme-post-background,
-    var(--default-theme-post-background)
-  );
-}
-
-.scalar-api-client--delete {
-  --default-scalar-api-client-color: var(
-    --theme-color-red,
-    var(--default-theme-color-red)
-  );
-  --default-scalar-api-client-background: var(
-    --theme-delete-background,
-    var(--default-theme-delete-background)
-  );
-}
-
-.scalar-api-client--patch {
-  --default-scalar-api-client-color: var(
-    --theme-color-yellow,
-    var(--default-theme-color-yellow)
-  );
-  --default-scalar-api-client-background: var(
-    --theme-patch-background,
-    var(--default-theme-patch-background)
-  );
-}
-
-.scalar-api-client--get {
-  --default-scalar-api-client-color: var(
-    --theme-color-blue,
-    var(--default-theme-color-blue)
-  );
-  --default-scalar-api-client-background: var(
-    --theme-get-background,
-    var(--default-theme-get-background)
-  );
-}
-
-.scalar-api-client--put {
-  --default-scalar-api-client-color: var(
-    --theme-color-orange,
-    var(--default-theme-color-orange)
-  );
-  --default-scalar-api-client-background: var(
-    --theme-put-background,
-    var(--default-theme-put-background)
-  );
 }
 
 .scalar-api-client__mobile-navigation {

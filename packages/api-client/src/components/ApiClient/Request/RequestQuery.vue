@@ -21,7 +21,9 @@ function addAnotherHandler() {
 }
 </script>
 <template>
-  <CollapsibleSection title="Query Parameters">
+  <CollapsibleSection
+    :defaultOpen="activeRequest.query && activeRequest.query.length > 0"
+    title="Query Parameters">
     <template v-if="!queries || queries.length === 0">
       <div class="scalar-api-client__empty-state">
         <button
@@ -51,6 +53,7 @@ function addAnotherHandler() {
       <Grid
         addLabel="Query Parameter"
         :items="queries"
+        :showMoreFilter="true"
         @addAnother="addAnotherHandler"
         @deleteIndex="handleDeleteIndex" />
     </template>

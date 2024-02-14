@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useKeyboardEvent } from '@scalar/use-keyboard-event'
+import { HttpMethod } from '@scalar/api-client'
 import { FlowModal, type ModalState } from '@scalar/use-modal'
+import { useMagicKeys, whenever } from '@vueuse/core'
 import Fuse from 'fuse.js'
 import type { OpenAPIV3_1 } from 'openapi-types'
 import { computed, ref, toRef, watch } from 'vue'
@@ -12,6 +13,8 @@ import type { Spec, TransformedOperation } from '../types'
 
 const props = defineProps<{ parsedSpec: Spec; modalState: ModalState }>()
 const reactiveSpec = toRef(props, 'parsedSpec')
+
+const keys = useMagicKeys()
 
 type FuseData = {
   title: string
@@ -183,55 +186,64 @@ watch(
   { immediate: true },
 )
 
-useKeyboardEvent({
-  element: searchModalRef,
-  keyList: ['enter'],
-  active: () => props.modalState.open,
-  handler: () => {
-    if (!window) return
-    onSearchResultClick(selectedEntry.value)
-    window.location.hash = selectedEntry.value.item.href
-    props.modalState.hide()
-  },
+whenever(keys.enter, () => {
+  if (!props.modalState.open) {
+    return
+  }
+
+  if (!window) {
+    return
+  }
+
+  onSearchResultClick(selectedEntry.value)
+  window.location.hash = selectedEntry.value.item.href
+  props.modalState.hide()
 })
 
-useKeyboardEvent({
-  element: searchModalRef,
-  keyList: ['ArrowDown'],
-  active: () => props.modalState.open,
-  handler: () => {
-    if (
-      selectedSearchResult.value <
+whenever(keys.ArrowDown, () => {
+  if (!props.modalState.open) {
+    return
+  }
+
+  if (!window) {
+    return
+  }
+
+  if (
+    selectedSearchResult.value <
+    searchResultsWithPlaceholderResults.value.length - 1
+  ) {
+    selectedSearchResult.value++
+  } else {
+    selectedSearchResult.value = 0
+  }
+
+  document.getElementById(selectedEntry.value.item.href)?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  })
+})
+
+whenever(keys.ArrowUp, () => {
+  if (!props.modalState.open) {
+    return
+  }
+
+  if (!window) {
+    return
+  }
+
+  if (selectedSearchResult.value > 0) {
+    selectedSearchResult.value--
+  } else {
+    selectedSearchResult.value =
       searchResultsWithPlaceholderResults.value.length - 1
-    ) {
-      selectedSearchResult.value++
-    } else {
-      selectedSearchResult.value = 0
-    }
-    document.getElementById(selectedEntry.value.item.href)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-    })
-  },
-})
+  }
 
-useKeyboardEvent({
-  element: searchModalRef,
-  keyList: ['ArrowUp'],
-  active: () => props.modalState.open,
-  handler: () => {
-    if (selectedSearchResult.value > 0) {
-      selectedSearchResult.value--
-    } else {
-      selectedSearchResult.value =
-        searchResultsWithPlaceholderResults.value.length - 1
-    }
-
-    document.getElementById(selectedEntry.value.item.href)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-    })
-  },
+  document.getElementById(selectedEntry.value.item.href)?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  })
 })
 
 const searchResultsWithPlaceholderResults = computed(
@@ -272,8 +284,12 @@ const onSearchResultClick = (entry: Fuse.FuseResult<FuseData>) => {
       class="ref-search-container">
       <input
         v-model="searchText"
+        autocapitalize="off"
+        autocomplete="off"
+        autocorrect="off"
         class="ref-search-input"
         placeholder="Search …"
+        spellcheck="false"
         type="text"
         @input="fuseSearch" />
     </div>
@@ -292,11 +308,11 @@ const onSearchResultClick = (entry: Fuse.FuseResult<FuseData>) => {
         :href="entry.item.href"
         @click="onSearchResultClick(entry)"
         @focus="selectedSearchResult = index">
-        <div
+        <HttpMethod
+          as="div"
           class="item-entry-http-verb"
-          :class="`item-entry-http-verb--${entry.item.httpVerb}`">
-          {{ entry.item.httpVerb }}
-        </div>
+          :method="entry.item.httpVerb ?? 'get'"
+          short />
         <div
           v-if="entry.item.title"
           class="item-entry-title">
@@ -415,28 +431,6 @@ a {
   position: relative;
   /* optically center since all characters  above baseline*/
   top: 0.5px;
-}
-.item-entry-http-verb--post {
-  color: var(--theme-color-green, var(--default-theme-color-green));
-}
-.item-entry-http-verb--patch {
-  color: var(--theme-color-yellow, var(--default-theme-color-yellow));
-}
-.item-entry-http-verb--get {
-  color: var(--theme-color-blue, var(--default-theme-color-blue));
-}
-.item-entry-http-verb--delete {
-  color: var(--theme-color-red, var(--default-theme-color-red));
-}
-.item-entry-http-verb--delete {
-  font-size: 0;
-}
-.item-entry-http-verb--delete:after {
-  content: 'DEL';
-  font-size: var(--theme-font-size-4, var(--default-theme-font-size-4));
-}
-.item-entry-http-verb--put {
-  color: var(--theme-color-orange, var(--default-theme-color-orange));
 }
 .item-entry-path {
   color: var(--theme-color-3, var(--default-theme-color-3));

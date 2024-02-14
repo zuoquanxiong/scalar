@@ -8,15 +8,6 @@ export type ReferenceProps = {
   configuration?: ReferenceConfiguration
 }
 
-export type SpecConfiguration = {
-  /** URL to a Swagger/OpenAPI file */
-  url?: string
-  /** Swagger/Open API spec */
-  content?: string | Record<string, any> | (() => Record<string, any>)
-  /** The result of @scalar/swagger-parser */
-  preparsedContent?: Record<any, any>
-}
-
 export type ReferenceConfiguration = {
   /** A string to use one of the color presets */
   theme?: ThemeId
@@ -33,7 +24,33 @@ export type ReferenceConfiguration = {
   /** Whether dark mode is on or off (light mode) */
   darkMode?: boolean
   /** Key used with CNTRL/CMD to open the search modal (defaults to 'k' e.g. CMD+k) */
-  searchHotKey?: string
+  searchHotKey?:
+    | 'a'
+    | 'b'
+    | 'c'
+    | 'd'
+    | 'e'
+    | 'f'
+    | 'g'
+    | 'h'
+    | 'i'
+    | 'j'
+    | 'k'
+    | 'l'
+    | 'm'
+    | 'n'
+    | 'o'
+    | 'p'
+    | 'q'
+    | 'r'
+    | 's'
+    | 't'
+    | 'u'
+    | 'v'
+    | 'w'
+    | 'x'
+    | 'y'
+    | 'z'
   /**
    * If used, passed data will be added to the HTML header
    * @see https://unhead.unjs.io/usage/composables/use-seo-meta
@@ -49,6 +66,17 @@ export type ReferenceConfiguration = {
   customCss?: string
   /** onSpecUpdate is fired on spec/swagger content change */
   onSpecUpdate?: (spec: string) => void
+  /** Prefill authentication */
+  authentication?: Partial<AuthenticationState>
+}
+
+export type SpecConfiguration = {
+  /** URL to a Swagger/OpenAPI file */
+  url?: string
+  /** Swagger/Open API spec */
+  content?: string | Record<string, any> | (() => Record<string, any>)
+  /** The result of @scalar/swagger-parser */
+  preparsedContent?: Record<any, any>
 }
 
 /** Default reference configuration */
@@ -208,6 +236,8 @@ export type RequestBodyMimeTypes = {
 }
 
 export type RequestBody = {
+  description?: string
+  required?: boolean
   content?: RequestBodyMimeTypes
 }
 
@@ -255,13 +285,6 @@ export type SecurityScheme =
   | OpenAPIV3.SecuritySchemeObject
   | OpenAPIV3_1.SecuritySchemeObject
 
-export type Components = Omit<
-  OpenAPIV3.ComponentsObject | OpenAPIV3_1.ComponentsObject,
-  'securitySchemes'
-> & {
-  securitySchemes?: Record<string, SecurityScheme>
-}
-
 export type Definitions = OpenAPIV2.DefinitionsObject
 
 export type Webhooks = Record<
@@ -271,22 +294,27 @@ export type Webhooks = Record<
 
 export type Spec = {
   tags?: Tag[]
-  info: Info
-  host?: string
-  basePath?: string
-  schemes?: string[]
+  info:
+    | Partial<OpenAPIV2.Document['info']>
+    | Partial<OpenAPIV3.Document['info']>
+    | Partial<OpenAPIV3_1.Document['info']>
+  host?: OpenAPIV2.Document['host']
+  basePath?: OpenAPIV2.Document['basePath']
+  schemes?: OpenAPIV2.Document['schemes']
   externalDocs?: ExternalDocs
   servers?: Server[]
-  components?: Components
+  components?: OpenAPIV3.ComponentsObject | OpenAPIV3_1.ComponentsObject
   webhooks?: Webhooks
   definitions?: Definitions
-  openapi?: string
-  swagger?: string
+  swagger?: OpenAPIV2.Document['swagger']
+  openapi?: OpenAPIV3.Document['openapi'] | OpenAPIV3_1.Document['openapi']
 }
 
 export type AuthenticationState = {
   securitySchemeKey: string | null
-  securitySchemes?: Record<string, SecurityScheme>
+  securitySchemes?:
+    | OpenAPIV3.ComponentsObject['securitySchemes']
+    | OpenAPIV3_1.ComponentsObject['securitySchemes']
   http: {
     basic: {
       username: string
